@@ -1,0 +1,28 @@
+:root {
+    --vp-c-brand-1: #38b91c;
+    --vp-c-brand-2: #1c5c0e;
+    --vp-c-brand-3: #ff6666;
+    --vp-c-default-soft: var(--vp-c-gray-soft);
+}
+
+.DocSearch-Button-Placeholder,
+.DocSearch-Search-Icon {
+    transform: translateY(-1px);
+}
+
+#localsearch-input {
+    line-height: 1.5rem;
+    font-family: inherit;
+}
+
+.search-bar {
+    padding-left: 1px !important;
+}
+
+#localsearch-label {
+    display: none !important;
+}
+
+.VPNavBarSearch {
+    padding-left: 12px;
+}

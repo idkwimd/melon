@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "build": "browserify src/mwc.js -p esmify -o docs/public/mwc.js",
+    "dev": "watchify src/mwc.js -p esmify -o docs/public/mwc.js -v"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "esmify": "^2.1.1",
+    "vitepress": "^1.2.3",
+    "watchify": "^4.0.0"
+  }
+}
