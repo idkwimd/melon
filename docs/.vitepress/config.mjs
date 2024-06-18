@@ -4,7 +4,7 @@ export default defineConfig({
     title: "Melon WC",
     description: "An easy-to-use web component library made with love by a watermelon lover",
     head: [
-        ['script', { type: 'module', src: "/mwc.js" }]
+        ['script', { type: 'module', src: '/mwc.js' }]
     ],
     vue: {
         template: {
@@ -32,7 +32,8 @@ export default defineConfig({
                 link: '/',
                 items: [
                     { text: 'Button', link: 'button' },
-                    { text: 'Input', link: 'input' }
+                    { text: 'Input', link: 'input' },
+                    { text: 'Menu', link: 'menu' }
                 ]
             }
         ],

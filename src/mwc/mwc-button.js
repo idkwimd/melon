@@ -15,17 +15,16 @@ customElements.define('mwc-button', class extends MWC
                     display: inline-block;
                 }
                 [root] {
-                    padding: var(--size-4, .5rem) var(--size-7, .875rem);
-                    border-radius: var(--size-3, .375rem);
-                    font-size: var(--size-8, 1rem);
+                    padding: .375rem .75rem;
+                    font-size: .875rem;
+                    border-radius: .375rem;
                     font-weight: 500;
-                    line-height: 1.45rem;
-                    border: 0;
+                    line-height: 1.5rem;
+                    border: 1px solid #3AB75C;
                     font-family: inherit;
                     cursor: pointer;
                     width: 100%;
-                    background: var(--c-brand, #1ABC9C);
-                    border: 1px solid var(--c-brand, #1ABC9C);
+                    background: var(--c-brand, #3AB75C);
                     color: var(--c-brand-text, #FFFFFF);
                 }
                 :host([disabled]) [root] {
@@ -33,15 +32,14 @@ customElements.define('mwc-button', class extends MWC
                     opacity: .6rem;
                 }
                 :host([small]) [root] {
-                    padding: var(--size-3, .375rem) var(--size-6, .75rem);
-                    font-size: var(--size-7, .875rem);
-                    border-radius: var(--size-2, .25rem);
-                    line-height: 1.12rem;
+                    padding: .25rem .625rem;
+                    font-size: .75rem;
+                    border-radius: .25rem;
+                    line-height: 1.25rem;
                 }
                 :host([outlined]) [root] {
                     background: transparent;
                     color: var(--c-brand, #1ABC9C);
-                    border: 1px solid var(--c-brand, #1ABC9C);
                 }
             `
         )

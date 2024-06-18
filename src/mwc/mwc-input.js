@@ -2,16 +2,19 @@ import { MWC } from './mwc.js'
 
 customElements.define('mwc-input', class extends MWC
 {
+    #root
     #origInput
 
     static observedAttributes = [
         'placeholder',
-        'type'
+        'type', 'min', 'max'
     ]
 
     static syncAttributes = {
         'placeholder': '.orig-input',
-        'type': '.orig-input'
+        'type': '.orig-input',
+        'min': '.orig-input',
+        'max': '.orig-input'
     }
 
     constructor ()
@@ -29,46 +32,70 @@ customElements.define('mwc-input', class extends MWC
                     display: inline-block;
                 }
                 [root] {
-                    border-radius: var(--size-3, .375rem);
+                    border-radius: .375rem;
                     border: 0;
                     font-family: inherit;
+                    display: flex;
+                    align-items: center;
                     width: 100%;
                     background: white;
-                    border: 1px solid #cbd5e1;
                     color: #222222;
+                    border: 1px solid rgb(209 213 219);
+                    font-size: .875rem;
                 }
                 [root]:focus-within {
-                    border: 1px solid var(--c-brand, #94a3b8);
+                    border: 1px solid var(--c-brand, #3AB75C);
+                }
+                :host([disabled]) [root] {
+                    pointer-events: none;
+                    opacity: .6;
                 }
                 .orig-input {
                     font-family: inherit;
-                    padding: var(--size-4, .5rem) var(--size-7, .875rem);
-                    font-size: var(--size-8, 1rem);
-                    font-weight: 500;
-                    line-height: 1.45rem;
+                    padding: .375rem .75rem;
+                    line-height: 1.5rem;
                     background: transparent;
                     outline: none;
                     border: 0;
+                    font-size: inherit;
+                }
+                :host([small]) [root] {
+                    font-size: .75rem;
                 }
                 :host([small]) .orig-input {
-                    padding: var(--size-3, .375rem) var(--size-6, .75rem);
-                    font-size: var(--size-7, .875rem);
-                    border-radius: var(--size-2, .25rem);
-                    line-height: 1.12rem;
+                    padding: .25rem .625rem;
+                    border-radius: .25rem;
+                    line-height: 1.25rem;
                 }
                 slot[name="before"] {
-                    padding-left: var(--size-7, .875rem);
+                    padding-left: .875rem;
                 }
                 slot[name="after"] {
-                    padding-right: var(--size-7, .875rem);
+                    padding-right: .875rem;
                 }
                 :host([small]) slot[name="before"] {
-                    padding-left: var(--size-6, .75rem);
+                    padding-left: .75rem;
                 }
                 :host([small]) slot[name="after"] {
-                    padding-right: var(--size-6, .75rem);
+                    padding-right: .75rem;
                 }
             `
         )
+
+        this.#root = this.shadowRoot.querySelector('[root]')
+        this.#origInput = this.shadowRoot.querySelector('.orig-input')
+    }
+
+    get value ()
+    {
+        return this.#origInput.value
+    }
+
+    /**
+     * @param {(string|number)} data 
+     */
+    set value (data)
+    {
+        this.#origInput.value = data
     }
 })
