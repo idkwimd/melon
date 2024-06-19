@@ -39,12 +39,13 @@ customElements.define('mwc-input', class extends MWC
                     align-items: center;
                     width: 100%;
                     background: white;
-                    color: #222222;
-                    border: 1px solid rgb(209 213 219);
+                    color: rgb(var(--cTheme, 0 0 0));
+                    border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));
                     font-size: .875rem;
+                    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                 }
                 [root]:focus-within {
-                    border: 1px solid var(--c-brand, #3AB75C);
+                    border: 1px solid rgb(var(--cTheme, 0 0 0));
                 }
                 :host([disabled]) [root] {
                     pointer-events: none;

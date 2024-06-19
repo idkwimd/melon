@@ -26,3 +26,7 @@
 .VPNavBarSearch {
     padding-left: 12px;
 }
+
+.VPSidebarItem.level-0 {
+    padding-bottom: 10px !important;
+}

@@ -47,7 +47,6 @@
 | ---       | ---       | ---               |
 | value | String \| Number | Get input value |
 
-
 ## Setters
 | Name      | Values    | Description       |
 | ---       | ---       | ---               |

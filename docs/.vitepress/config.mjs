@@ -27,13 +27,19 @@ export default defineConfig({
         },
         sidebar: [
             {
+                text: 'Getting Started',
+                link: '/getting-started',
+            },
+            {
                 text: 'Elements',
                 base: '/elements/',
                 link: '/',
                 items: [
                     { text: 'Button', link: 'button' },
                     { text: 'Input', link: 'input' },
-                    { text: 'Menu', link: 'menu' }
+                    { text: 'Menu', link: 'menu', items: [
+                        { text: 'Menu Item', link: 'menu-item' }
+                    ]},
                 ]
             }
         ],

@@ -20,12 +20,13 @@ customElements.define('mwc-button', class extends MWC
                     border-radius: .375rem;
                     font-weight: 500;
                     line-height: 1.5rem;
-                    border: 1px solid #3AB75C;
+                    border: 1px solid rgb(var(--cTheme, 0 0 0));
                     font-family: inherit;
                     cursor: pointer;
                     width: 100%;
-                    background: var(--c-brand, #3AB75C);
-                    color: var(--c-brand-text, #FFFFFF);
+                    background: rgb(var(--cTheme, 0 0 0));
+                    color: rgb(var(--cThemeText, 255 255 255));
+                    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                 }
                 :host([disabled]) [root] {
                     pointer-events: none;
@@ -39,7 +40,7 @@ customElements.define('mwc-button', class extends MWC
                 }
                 :host([outlined]) [root] {
                     background: transparent;
-                    color: var(--c-brand, #1ABC9C);
+                    color: rgb(var(--cTheme, 0 0 0));
                 }
             `
         )

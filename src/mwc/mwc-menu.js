@@ -18,7 +18,8 @@ customElements.define('mwc-menu', class extends MWC
                     width: 100%;
                     padding: .375rem;
                     border-radius: .375rem;
-                    border: 1px solid rgb(var(--border-color, 209 213 219));
+                    border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));
+                    background: rgb(var(--cBaseL2, 255 255 255));
                 }
                 :host([nested]) [root] {
                     border: none;
@@ -41,6 +42,7 @@ customElements.define('mwc-menu-item', class extends MWC
             /*html*/`
                 <div root>
                     <div class="text">
+                        <slot name="icon" display="inline-block"></slot>
                         <slot></slot>
                         <svg class="caret closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
                         <svg class="caret opened" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
@@ -59,6 +61,7 @@ customElements.define('mwc-menu-item', class extends MWC
                     padding: .375rem .75rem;
                     cursor: pointer;
                     border-radius: .25rem;
+                    color: rgb(var(--cTheme, 0 0 0));
                 }
                 .text:hover {
                     background: rgb(0 0 0 / .08);
@@ -71,6 +74,9 @@ customElements.define('mwc-menu-item', class extends MWC
                 }
                 slot[name="nested"] {
                     display: none;
+                }
+                slot[name="icon"] {
+                    margin-right: .75rem;
                 }
                 :host([opened]) slot[name="nested"] {
                     display: block;
