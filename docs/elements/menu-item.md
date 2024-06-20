@@ -7,4 +7,4 @@ Intended to be used as child of `<mwc-menu>`. See [Menu](menu)
 | Name | Description |
 | ---  | ---         |
 | [default] | Item content |
-| icon | Icon on the left   |
+| icon | Icon on the left  |

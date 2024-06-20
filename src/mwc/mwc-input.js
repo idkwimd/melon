@@ -43,6 +43,7 @@ customElements.define('mwc-input', class extends MWC
                     border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));
                     font-size: .875rem;
                     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                    line-height: 1.5rem;
                 }
                 [root]:focus-within {
                     border: 1px solid rgb(var(--cTheme, 0 0 0));
@@ -54,7 +55,7 @@ customElements.define('mwc-input', class extends MWC
                 .orig-input {
                     font-family: inherit;
                     padding: .375rem .75rem;
-                    line-height: 1.5rem;
+                    line-height: inherit;
                     background: transparent;
                     outline: none;
                     border: 0;
@@ -69,16 +70,16 @@ customElements.define('mwc-input', class extends MWC
                     line-height: 1.25rem;
                 }
                 slot[name="before"] {
-                    padding-left: .875rem;
-                }
-                slot[name="after"] {
-                    padding-right: .875rem;
-                }
-                :host([small]) slot[name="before"] {
                     padding-left: .75rem;
                 }
-                :host([small]) slot[name="after"] {
+                slot[name="after"] {
                     padding-right: .75rem;
+                }
+                :host([small]) slot[name="before"] {
+                    padding-left: .625rem;
+                }
+                :host([small]) slot[name="after"] {
+                    padding-right: .625rem;
                 }
             `
         )

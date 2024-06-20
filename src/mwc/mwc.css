@@ -1,3 +1,15 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css');
+@import url('https://rsms.me/inter/inter.css');
+
+body {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'zero';
+    box-sizing: border-box;
+}
+body * {
+    box-sizing: inherit;
+}
+
 :root {
     --cBase: 235 235 245;
     --cBaseText: 31 38 64;

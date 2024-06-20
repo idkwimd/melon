@@ -112,7 +112,9 @@ customElements.define('mwc-menu-item', class extends MWC
         if (value !== undefined)
         {
             this.dispatchEvent(new CustomEvent('select', {
-                detail: value
+                detail: value,
+                composed: true,
+                bubbles: true
             }))
         }
     }

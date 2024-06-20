@@ -37,9 +37,11 @@ export default defineConfig({
                 items: [
                     { text: 'Button', link: 'button' },
                     { text: 'Input', link: 'input' },
+                    { text: 'Select', link: 'select' },
                     { text: 'Menu', link: 'menu', items: [
                         { text: 'Menu Item', link: 'menu-item' }
                     ]},
+                    { text: 'Tab', link: 'tab' }
                 ]
             }
         ],

@@ -1,3 +1,5 @@
 import './mwc/mwc-button.js'
 import './mwc/mwc-input.js'
 import './mwc/mwc-menu.js'
+import './mwc/mwc-select.js'
+import './mwc/mwc-tab.js'

@@ -29,12 +29,12 @@
 | Name      | Values    | Description       |
 | ---       | ---       | ---               |
 | small     |           | Smaller form factor      |
-| name      | String | |
-| placeholder | String | |
+| name      | `String` | |
+| placeholder | `String` | |
 | disabled |||
-| type | String | See [Types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) |
-| min | Number ||
-| max | Number ||
+| type | `String` | See [Types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) |
+| min | `Number` ||
+| max | `Number` ||
 
 ## Slots
 | Name      | Description       |
@@ -45,9 +45,9 @@
 ## Getters
 | Name      | Values    | Description       |
 | ---       | ---       | ---               |
-| value | String \| Number | Get input value |
+| value | `String \| Number` | Get input value |
 
 ## Setters
 | Name      | Values    | Description       |
 | ---       | ---       | ---               |
-| value | String \| Number | Set input value |
+| value | `String \| Number` | Set input value |

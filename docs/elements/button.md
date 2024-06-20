@@ -12,9 +12,9 @@
 | ---       | ---       | ---               |
 | small     |           | Smaller form factor      |
 | disabled  |           | Disabled button   |
-| theme     | `brand`   | Color theme. Default is `brand`       |
+| theme     | `String`   | Color theme. Default is `brand`       |
 | outlined  |    | |
-| type      | `submit` `button` | Using `submit` inside `<mwc-form>` will trigger the form to submit asynchronously |
+| type      | `String` | Using `type="submit"` inside `<mwc-form>` will trigger the form to submit asynchronously |
 
 ## Slots
 | Name | Description |
