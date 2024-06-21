@@ -45,6 +45,10 @@ customElements.define('mwc-input', class extends MWC
                     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                     line-height: 1.5rem;
                 }
+                :host([block]) {
+                    display: block;
+                    width: 100%;
+                }
                 [root]:focus-within {
                     border: 1px solid rgb(var(--cTheme, 0 0 0));
                 }
@@ -60,6 +64,9 @@ customElements.define('mwc-input', class extends MWC
                     outline: none;
                     border: 0;
                     font-size: inherit;
+                    flex: 1;
+                    min-width: 0px;
+                    max-width: 100%;
                 }
                 :host([small]) [root] {
                     font-size: .75rem;

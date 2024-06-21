@@ -64,7 +64,7 @@ customElements.define('mwc-menu-item', class extends MWC
                     color: rgb(var(--cTheme, 0 0 0));
                 }
                 .text:hover {
-                    background: rgb(0 0 0 / .08);
+                    background: rgb(var(--cBaseL1, 0 0 0 / .08));
                 }
                 .caret {
                     display: none;
@@ -77,6 +77,7 @@ customElements.define('mwc-menu-item', class extends MWC
                 }
                 slot[name="icon"] {
                     margin-right: .75rem;
+                    margin-left: -.375rem
                 }
                 :host([opened]) slot[name="nested"] {
                     display: block;

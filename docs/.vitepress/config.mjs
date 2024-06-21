@@ -41,7 +41,10 @@ export default defineConfig({
                     { text: 'Menu', link: 'menu', items: [
                         { text: 'Menu Item', link: 'menu-item' }
                     ]},
-                    { text: 'Tab', link: 'tab' }
+                    { text: 'Tab', link: 'tab', items: [
+                        { text: 'Tab Handle', link: 'tab-handle' }
+                    ]},
+                    { text: 'Dialog', link: 'dialog' }
                 ]
             }
         ],

@@ -14,18 +14,22 @@ export class MWC extends HTMLElement
                 [root] * {
                     box-sizing: inherit;
                 }
-                slot[display] {
+                [display] {
                     display: none;
                 }
             </style>
         `
 
-        this.shadowRoot.querySelectorAll('slot[display]').forEach(el =>
+        this.shadowRoot.querySelectorAll('[display]').forEach(el =>
         {
-            el.addEventListener('slotchange', (event) =>
+            const slot = el instanceof HTMLSlotElement
+                ? el
+                : el.querySelector('slot')
+
+            slot.addEventListener('slotchange', (event) =>
             {
-                event.target.style.display = event.target.assignedNodes().length > 0
-                    ? event.target.getAttribute('display')
+                el.style.display = event.target.assignedNodes().length > 0
+                    ? el.getAttribute('display')
                     : 'none'
             })
         })

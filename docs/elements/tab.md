@@ -1,5 +1,4 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
     import Preview from '../components/Preview.vue'
 </script>
 
@@ -27,5 +26,3 @@
         &lt;div name=&quot;tab3&quot;&gt;TAB 3&lt;/div&gt;
     &lt;/mwc-tab&gt;
 "/>
-
-> Add `name=""` attribute to child elements to make it tab view
