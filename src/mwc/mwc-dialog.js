@@ -41,7 +41,7 @@ customElements.define('mwc-dialog', class extends MWC
                     pointer-events: initial;
                 }
                 :host([small]) .card {
-                    width: 400px;
+                    width: 480px;
                 }
                 .card {
                     margin-top: 4rem;

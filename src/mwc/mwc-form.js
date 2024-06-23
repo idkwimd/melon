@@ -1,6 +1,6 @@
 import { MWC } from './mwc.js'
 
-customElements.define('mwc-dialog', class extends MWC
+customElements.define('mwc-form', class extends MWC
 {
     #root
 
@@ -93,6 +93,7 @@ customElements.define('mwc-dialog', class extends MWC
         const data = new FormData()
         const fields = {}
         const formElements = this.#getFormElements()
+        const jsonData = {}
 
         for (const el of formElements)
         {
@@ -102,12 +103,20 @@ customElements.define('mwc-dialog', class extends MWC
 
             if (el.value !== undefined)
             {
-                let name = el.getAttribute('name')
+                if (name.startsWith('json:'))
+                {
+                    const [, field, prop] = name.split(':')
+                    
+                    if (!jsonData[field])
+                    {
+                        jsonData[field] = {}
+                    }
+
+                    jsonData[field][prop] = el.value
+                }
 
                 if (el.value instanceof Array)
-                {
-                    name = name + '[]'
-                    
+                {               
                     for (const value of el.value)
                     {
                         data.append(name, value)
@@ -115,9 +124,14 @@ customElements.define('mwc-dialog', class extends MWC
                 }
                 else
                 {
-                    data.append(name, el.value)
+                    data.set(name, el.value)
                 }
             }
+        }
+
+        for (const field in jsonData)
+        {
+            data.set(field, JSON.stringify(jsonData[field]))
         }
 
         return {

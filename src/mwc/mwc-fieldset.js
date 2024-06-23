@@ -16,10 +16,13 @@ customElements.define('mwc-fieldset', class extends MWC
             /*css*/`
                 [root] {
                     border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));
-                    padding: 1rem;
+                    padding: 1.5rem;
                     border-radius: .375rem;
                     background: rgb(var(--cBaseL2, 255 255 255));
                     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                }
+                :host([bordered]) [root] {
+                    border: 1px solid rgb(var(--cTheme, 0 0 0));
                 }
                 legend {
                     padding-left: .5rem;

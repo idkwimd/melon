@@ -67,6 +67,14 @@ customElements.define('mwc-select', class extends MWC
 
         this.#root = this.shadowRoot.querySelector('[root]')
         this.#origSelect = this.shadowRoot.querySelector('.orig-select')
+        this.#origSelect.addEventListener('change', this.#onChange.bind(this))
+    }
+
+    #onChange (event)
+    {
+        this.dispatchEvent(new CustomEvent('change', {
+            detail: event.target.value
+        }))
     }
 
     get value ()
@@ -92,9 +100,18 @@ customElements.define('mwc-select', class extends MWC
             this.#origSelect.remove(0)
         }
 
+        let firstOpt = new Option('Select...')
+            firstOpt.disabled = true
+            firstOpt.selected = true
+
+        this.#origSelect.options[0] = firstOpt
+
         for (const [i, item] of options.entries())
         {
-            this.#origSelect.options[i] = new Option(item.text, item.id || item.value)
+            this.#origSelect.options[i + 1] = new Option(
+                item.text || item.name,
+                item.id || item.value
+            )
         }
     }
 })
