@@ -4,6 +4,7 @@ customElements.define('mwc-select', class extends MWC
 {
     #root
     #origSelect
+    #errorMessageEl
 
     constructor ()
     {
@@ -12,6 +13,7 @@ customElements.define('mwc-select', class extends MWC
                 <div root>
                     <slot name="before" display="inline-block"></slot>
                     <select class="orig-select"></select>
+                    <div class="error-message"></div>
                 </div>
             `,
             /*css*/`
@@ -27,6 +29,7 @@ customElements.define('mwc-select', class extends MWC
                     border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));
                     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                     line-height: 1.5rem;
+                    position: relative;
                 }
                 [root]:focus-within {
                     border: 1px solid rgb(var(--cTheme, 0 0 0));
@@ -59,8 +62,26 @@ customElements.define('mwc-select', class extends MWC
                     background-size: 24px;
                     min-width: 4rem;
                 }
+                .error-message {
+                    padding: .125rem .5rem;
+                    background: rgb(var(--cError, 232 85 62));
+                    color: rgb(var(--cErrorText, 255 255 255));
+                    border-radius: 0px 0px .25rem .25rem;
+                    font-size: .75rem;
+                    display: none;
+                    position: absolute;
+                    top: calc(100%);
+                    right: -1px;
+                }
                 slot[name="before"] {
                     margin-left: .5rem;
+                }
+                :host([has-error]) [root] {
+                    border: 1px solid rgb(var(--cError, 232 85 62));
+                    border-bottom-right-radius: 0px;
+                }
+                :host([has-error]) .error-message {
+                   display: inline-block;
                 }
             `
         )
@@ -68,10 +89,14 @@ customElements.define('mwc-select', class extends MWC
         this.#root = this.shadowRoot.querySelector('[root]')
         this.#origSelect = this.shadowRoot.querySelector('.orig-select')
         this.#origSelect.addEventListener('change', this.#onChange.bind(this))
+        this.#errorMessageEl = this.shadowRoot.querySelector('.error-message')
+        this.#origSelect.addEventListener('change', this.#onChange.bind(this))
     }
 
     #onChange (event)
     {
+        this.error = null
+
         this.dispatchEvent(new CustomEvent('change', {
             detail: event.target.value
         }))
@@ -100,7 +125,7 @@ customElements.define('mwc-select', class extends MWC
             this.#origSelect.remove(0)
         }
 
-        let firstOpt = new Option('Select...')
+        let firstOpt = new Option('Select...', '')
             firstOpt.disabled = true
             firstOpt.selected = true
 
@@ -113,5 +138,17 @@ customElements.define('mwc-select', class extends MWC
                 item.id || item.value
             )
         }
+    }
+
+    set error (message)
+    {
+        if ([undefined, null].includes(message))
+        {
+            this.removeAttribute('has-error')
+            return
+        }
+
+        this.#errorMessageEl.textContent = message
+        this.setAttribute('has-error', '')
     }
 })

@@ -4,6 +4,7 @@ customElements.define('mwc-input', class extends MWC
 {
     #root
     #origInput
+    #errorMessageEl
 
     static observedAttributes = [
         'placeholder',
@@ -25,6 +26,7 @@ customElements.define('mwc-input', class extends MWC
                     <slot name="before" display="inline-block"></slot>
                     <input type="text" class="orig-input" />
                     <slot name="after" display="inline-block"></slot>
+                    <div class="error-message"></div>
                 </div>
             `,
             /*css*/`
@@ -44,6 +46,7 @@ customElements.define('mwc-input', class extends MWC
                     font-size: .875rem;
                     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                     line-height: 1.5rem;
+                    position: relative;
                 }
                 :host([block]) {
                     display: block;
@@ -55,6 +58,17 @@ customElements.define('mwc-input', class extends MWC
                 :host([disabled]) [root] {
                     pointer-events: none;
                     opacity: .6;
+                }
+                .error-message {
+                    padding: .125rem .5rem;
+                    background: rgb(var(--cError, 232 85 62));
+                    color: rgb(var(--cErrorText, 255 255 255));
+                    border-radius: 0px 0px .25rem .25rem;
+                    font-size: .75rem;
+                    display: none;
+                    position: absolute;
+                    top: calc(100%);
+                    right: -1px;
                 }
                 .orig-input {
                     font-family: inherit;
@@ -88,11 +102,20 @@ customElements.define('mwc-input', class extends MWC
                 :host([small]) slot[name="after"] {
                     padding-right: .625rem;
                 }
+                :host([has-error]) [root] {
+                    border: 1px solid rgb(var(--cError, 232 85 62));
+                    border-bottom-right-radius: 0px;
+                }
+                :host([has-error]) .error-message {
+                   display: inline-block;
+                }
             `
         )
 
         this.#root = this.shadowRoot.querySelector('[root]')
         this.#origInput = this.shadowRoot.querySelector('.orig-input')
+        this.#errorMessageEl = this.shadowRoot.querySelector('.error-message')
+        this.#origInput.addEventListener('input', this.#onInput.bind(this))
     }
 
     get value ()
@@ -106,5 +129,22 @@ customElements.define('mwc-input', class extends MWC
     set value (data)
     {
         this.#origInput.value = data
+    }
+
+    set error (message)
+    {
+        if ([undefined, null].includes(message))
+        {
+            this.removeAttribute('has-error')
+            return
+        }
+
+        this.#errorMessageEl.textContent = message
+        this.setAttribute('has-error', '')
+    }
+
+    #onInput ()
+    {
+        this.error = null
     }
 })

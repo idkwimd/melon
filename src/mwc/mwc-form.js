@@ -1,5 +1,16 @@
 import { MWC } from './mwc.js'
 
+
+class FormError extends Error
+{
+    constructor (message, field)
+    {
+        super(message)
+        this.field = field
+    }
+}
+
+
 customElements.define('mwc-form', class extends MWC
 {
     #root
@@ -34,8 +45,22 @@ customElements.define('mwc-form', class extends MWC
         {
             throw new Error('No action found for <wc-form>')
         }
+        
+        let formData
 
-        let formData = this.#makeFormData()
+        try
+        {
+            formData = this.#makeFormData()
+        }
+        catch (err)
+        {
+            if (err instanceof FormError)
+            {
+                err.field.error = err.message.trim()
+                return
+            }
+        }
+
         let res
         let responseEvent = 'success'
         let fetchFn = window.$fetch || window.fetch
@@ -98,6 +123,12 @@ customElements.define('mwc-form', class extends MWC
         for (const el of formElements)
         {
             const name = el.getAttribute('name')
+            const isRequired = el.hasAttribute('required')
+
+            if (isRequired && [undefined, null, ''].includes(el.value))
+            {
+                throw new FormError(`This field is required`, el)
+            }
 
             fields[name] = el
 
@@ -159,15 +190,28 @@ customElements.define('mwc-form', class extends MWC
     set data (o)
     {
         const formElements = this.#getFormElements()
+        const jsonData = {}
         
         for (const el of formElements)
         {
             const altName = el.getAttribute('alt-name')
             const name = el.getAttribute('name')
 
-            const value = o === null
+            let value = o === null
                 ? ''
                 : o[altName || name]
+
+            if (name.startsWith('json:'))
+            {
+                const [, field, prop] = name.split(':')
+
+                if (!jsonData[field])
+                {
+                    jsonData[field] = JSON.parse(o[field])
+                }
+
+                value = jsonData[field][prop]
+            }
 
             if (value !== undefined)
             {
