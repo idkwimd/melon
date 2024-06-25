@@ -40,6 +40,14 @@ customElements.define('mwc-select', class extends MWC
                 :host([block]) [root] {
                     display: flex;
                 }
+                :host([small]) [root] {
+                    font-size: .75rem;
+                    border-radius: .25rem;
+                    line-height: 1.25rem;
+                }
+                :hist([small]) .orig-select {
+                    padding: .25rem .625rem;
+                }
                 .orig-select {
                     box-sizing: border-box;
                     display: block;

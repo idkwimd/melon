@@ -132,7 +132,7 @@ customElements.define('mwc-form', class extends MWC
 
             fields[name] = el
 
-            if (el.value !== undefined)
+            if (![undefined, null, ''].includes(el.value))
             {
                 if (name.startsWith('json:'))
                 {
@@ -147,7 +147,11 @@ customElements.define('mwc-form', class extends MWC
                 }
 
                 if (el.value instanceof Array)
-                {               
+                {      
+                    name = name.endsWith('[]')
+                        ? name
+                        : name + '[]'
+                    
                     for (const value of el.value)
                     {
                         data.append(name, value)
@@ -155,7 +159,7 @@ customElements.define('mwc-form', class extends MWC
                 }
                 else
                 {
-                    data.set(name, el.value)
+                    data.append(name, el.value)
                 }
             }
         }

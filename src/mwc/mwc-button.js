@@ -42,6 +42,9 @@ customElements.define('mwc-button', class extends MWC
                     background: transparent;
                     color: rgb(var(--cTheme, 0 0 0));
                 }
+                :host([block]) {
+                    display: block;
+                }
             `
         )
     }

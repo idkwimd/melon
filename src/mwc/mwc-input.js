@@ -116,6 +116,7 @@ customElements.define('mwc-input', class extends MWC
         this.#origInput = this.shadowRoot.querySelector('.orig-input')
         this.#errorMessageEl = this.shadowRoot.querySelector('.error-message')
         this.#origInput.addEventListener('input', this.#onInput.bind(this))
+        this.#origInput.addEventListener('change', this.#onChange.bind(this))
     }
 
     get value ()
@@ -146,5 +147,12 @@ customElements.define('mwc-input', class extends MWC
     #onInput ()
     {
         this.error = null
+    }
+
+    #onChange (event)
+    {
+        this.dispatchEvent(new CustomEvent('change', {
+            detail: event.target.value 
+        }))
     }
 })
