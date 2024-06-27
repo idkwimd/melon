@@ -46,3 +46,8 @@ nameSelect.data = [
 | Name      | Values    | Description       |
 | ---       | ---       | ---               |
 | name | `String` ||
+
+## Event
+| Name      | Values    | Description       |
+| ---       | ---       | ---               |
+| select | `String\|Number` | When item is selected |

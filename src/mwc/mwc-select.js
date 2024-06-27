@@ -65,7 +65,7 @@ customElements.define('mwc-select', class extends MWC
                     flex: 1;
                     appearance: none;
                     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z'%3E%3C/path%3E%3C/svg%3E");
-                    background-position: right .5rem top calc(50% + .5px);
+                    background-position: right .5rem top 50%;
                     background-repeat: no-repeat;
                     background-size: 24px;
                     min-width: 4rem;
@@ -105,7 +105,7 @@ customElements.define('mwc-select', class extends MWC
     {
         this.error = null
 
-        this.dispatchEvent(new CustomEvent('change', {
+        this.dispatchEvent(new CustomEvent('select', {
             detail: event.target.value
         }))
     }

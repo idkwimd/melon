@@ -36,7 +36,9 @@ export default defineConfig({
                 link: '/',
                 items: [
                     { text: 'Button', link: 'button' },
-                    { text: 'Input', link: 'input' },
+                    { text: 'Input', link: 'input', items: [
+                        { text: 'Label', link: 'label' }
+                    ]},
                     { text: 'Select', link: 'select' },
                     { text: 'Menu', link: 'menu', items: [
                         { text: 'Menu Item', link: 'menu-item' }
@@ -44,7 +46,11 @@ export default defineConfig({
                     { text: 'Tab', link: 'tab', items: [
                         { text: 'Tab Handle', link: 'tab-handle' }
                     ]},
-                    { text: 'Dialog', link: 'dialog' }
+                    { text: 'Dialog', link: 'dialog' },
+                    { text: 'Fieldset', link: 'fieldset' },
+                    { text: 'Grid', link: 'grid' },
+                    { text: 'Card', link: 'card' },
+                    { text: 'Form', link: 'form' }
                 ]
             }
         ],

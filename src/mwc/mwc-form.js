@@ -22,6 +22,11 @@ customElements.define('mwc-form', class extends MWC
                 <form root>
                     <slot></slot>
                 </form>
+            `,
+            /*css*/`
+                :host {
+                    display: block;
+                }
             `
         )
 
@@ -145,8 +150,7 @@ customElements.define('mwc-form', class extends MWC
 
                     jsonData[field][prop] = el.value
                 }
-
-                if (el.value instanceof Array)
+                else if (el.value instanceof Array)
                 {      
                     name = name.endsWith('[]')
                         ? name

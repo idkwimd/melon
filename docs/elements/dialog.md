@@ -34,7 +34,7 @@ dialogTrigger.addEventListener('click', () => {
 
 ## Methods
 
-| Name | Description |
-| --- | --- |
-| show( ) | Show the dialog |
-| hide( ) | Hide the dialog |
+| Name | Parameters | Description |
+| --- | --- | --- |
+| show | | Show the dialog |
+| hide | | Hide the dialog |
