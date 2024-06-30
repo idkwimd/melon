@@ -1,5 +1,13 @@
+---
+head:
+    - - script
+      - src: select.js
+      - defer:
+---
+
+
 <script setup>
-    import Preview from '../components/Preview.vue'
+    import { ref, onMounted } from 'vue' 
 </script>
 
 # Select
@@ -18,18 +26,7 @@ nameSelect.data = [
 ]
 ```
 :::
-<Preview html="
-    <mwc-select id=&quot;nameSelect&quot;></mwc-select>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            nameSelect.data = [
-                { text: 'Aritra', value: 1 },
-                { text: 'Mark', value: 2 },
-                { text: 'Venessa Williams', value: 3 }
-            ]
-        })
-    </script>
-" />
+<mwc-select id="nameSelect" ref="nameSelect"></mwc-select>
 
 ## Getters
 | Name      | Values    | Description       |
