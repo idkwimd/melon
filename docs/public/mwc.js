@@ -556,13 +556,7 @@ customElements.define('mwc-label', /*#__PURE__*/function (_MWC) {
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _mwc = require("./mwc.js");
-var _root, _nestedSlot, _hasNestedMenu, _Class_brand;
-function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
-function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
-function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
-function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _root, _selectedMenu, _slot, _Class_brand, _root2, _nestedSlot, _hasNestedMenu, _Class2_brand;
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
@@ -575,29 +569,64 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-customElements.define('mwc-menu', /*#__PURE__*/function (_MWC) {
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+customElements.define('mwc-menu', (_root = /*#__PURE__*/new WeakMap(), _selectedMenu = /*#__PURE__*/new WeakMap(), _slot = /*#__PURE__*/new WeakMap(), _Class_brand = /*#__PURE__*/new WeakSet(), /*#__PURE__*/function (_MWC) {
   function _class() {
+    var _this;
     _classCallCheck(this, _class);
-    return _callSuper(this, _class, [/*html*/"\n                <div root>\n                    <slot></slot>\n                </div>\n            ", /*css*/"\n                :host {\n                    display: block;\n                }\n                [root] {\n                    width: 100%;\n                    padding: .375rem;\n                    border-radius: .375rem;\n                    border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));\n                    background: rgb(var(--cBaseL2, 255 255 255));\n                }\n                :host([nested]) [root] {\n                    border: none;\n                    padding: 0 0 0 1rem;\n                }\n            "]);
+    _this = _callSuper(this, _class, [/*html*/"\n                <div root>\n                    <slot></slot>\n                </div>\n            ", /*css*/"\n                :host {\n                    display: block;\n                }\n                [root] {\n                    width: 100%;\n                    padding: .375rem;\n                    border-radius: .375rem;\n                    border: 1px solid rgb(var(--cBaseBorder, 0 0 0 / .15));\n                    background: rgb(var(--cBaseL2, 255 255 255));\n                }\n                :host([nested]) [root] {\n                    border: none;\n                    padding: 0 0 0 1rem;\n                }\n            "]);
+    _classPrivateMethodInitSpec(_this, _Class_brand);
+    _classPrivateFieldInitSpec(_this, _root, void 0);
+    _classPrivateFieldInitSpec(_this, _selectedMenu, void 0);
+    _classPrivateFieldInitSpec(_this, _slot, void 0);
+    _classPrivateFieldSet(_root, _this, _this.shadowRoot.querySelector('[root]'));
+    _classPrivateFieldGet(_root, _this).addEventListener('select', _assertClassBrand(_Class_brand, _this, _onMenuSelect).bind(_this));
+    _classPrivateFieldSet(_slot, _this, _this.shadowRoot.querySelector('slot'));
+    return _this;
   }
   _inherits(_class, _MWC);
   return _createClass(_class);
-}(_mwc.MWC));
-customElements.define('mwc-menu-item', (_root = /*#__PURE__*/new WeakMap(), _nestedSlot = /*#__PURE__*/new WeakMap(), _hasNestedMenu = /*#__PURE__*/new WeakMap(), _Class_brand = /*#__PURE__*/new WeakSet(), /*#__PURE__*/function (_MWC2) {
+}(_mwc.MWC)));
+function _onMenuSelect(event) {
+  if (this.hasAttribute('nested')) {
+    return;
+  }
+  if (!_classPrivateFieldGet(_selectedMenu, this)) {
+    var el = _classPrivateFieldGet(_slot, this).assignedElements({
+      flatten: true
+    }).find(function (x) {
+      return x.matches('mwc-menu-item[active]');
+    });
+    if (el) {
+      _classPrivateFieldSet(_selectedMenu, this, el);
+    }
+  }
+  if (_classPrivateFieldGet(_selectedMenu, this)) {
+    _classPrivateFieldGet(_selectedMenu, this).removeAttribute('active');
+  }
+  _classPrivateFieldSet(_selectedMenu, this, event.detail.element);
+  _classPrivateFieldGet(_selectedMenu, this).setAttribute('active', '');
+}
+customElements.define('mwc-menu-item', (_root2 = /*#__PURE__*/new WeakMap(), _nestedSlot = /*#__PURE__*/new WeakMap(), _hasNestedMenu = /*#__PURE__*/new WeakMap(), _Class2_brand = /*#__PURE__*/new WeakSet(), /*#__PURE__*/function (_MWC2) {
   function _class2() {
-    var _this;
+    var _this2;
     _classCallCheck(this, _class2);
-    _this = _callSuper(this, _class2, [/*html*/"\n                <div root>\n                    <div class=\"text\">\n                        <slot name=\"icon\" display=\"inline-block\"></slot>\n                        <slot></slot>\n                        <svg class=\"caret closed\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z\"></path></svg>\n                        <svg class=\"caret opened\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z\"></path></svg>\n                    </div>\n                    <slot name=\"nested\"></slot>\n                </div>\n            ", /*css*/"\n                :host {\n                    display: block;\n                }\n                .text {\n                    width: 100%;\n                    display: flex;\n                    align-items: center;\n                    padding: .375rem .75rem;\n                    cursor: pointer;\n                    border-radius: .25rem;\n                    color: rgb(var(--cTheme, 0 0 0));\n                }\n                .text:hover {\n                    background: rgb(var(--cBaseL1, 0 0 0 / .08));\n                }\n                .caret {\n                    display: none;\n                    height: 22px;\n                    margin-left: auto;\n                    margin-right: -.375rem;\n                }\n                slot[name=\"nested\"] {\n                    display: none;\n                }\n                slot[name=\"icon\"] {\n                    margin-right: .75rem;\n                    margin-left: -.375rem\n                }\n                :host([opened]) slot[name=\"nested\"] {\n                    display: block;\n                }\n                :host([has-nested-menu][opened]) .caret.opened {\n                    display: inline-block;\n                }\n                :host([has-nested-menu]:not([opened])) .caret.closed {\n                    display: inline-block;\n                }\n            "]);
-    _classPrivateMethodInitSpec(_this, _Class_brand);
-    _classPrivateFieldInitSpec(_this, _root, void 0);
-    _classPrivateFieldInitSpec(_this, _nestedSlot, void 0);
-    _classPrivateFieldInitSpec(_this, _hasNestedMenu, void 0);
-    _classPrivateFieldSet(_hasNestedMenu, _this, false);
-    _classPrivateFieldSet(_root, _this, _this.shadowRoot.querySelector('[root]'));
-    _classPrivateFieldGet(_root, _this).addEventListener('click', _assertClassBrand(_Class_brand, _this, _onClick).bind(_this));
-    _classPrivateFieldSet(_nestedSlot, _this, _this.shadowRoot.querySelector('slot[name="nested"]'));
-    _classPrivateFieldGet(_nestedSlot, _this).addEventListener('slotchange', _assertClassBrand(_Class_brand, _this, _onNestedSlotChange).bind(_this));
-    return _this;
+    _this2 = _callSuper(this, _class2, [/*html*/"\n                <div root>\n                    <div class=\"text\">\n                        <slot name=\"icon\" display=\"inline-block\"></slot>\n                        <slot></slot>\n                        <svg class=\"caret closed\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z\"></path></svg>\n                        <svg class=\"caret opened\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z\"></path></svg>\n                    </div>\n                    <slot name=\"nested\"></slot>\n                </div>\n            ", /*css*/"\n                :host {\n                    display: block;\n                }\n                :host([active]) .text::after {\n                    content: '';\n                    position: absolute;\n                    right: 0;\n                    top: 0;\n                    width: 3px;\n                    height: 100%;\n                    background: rgb(var(--cTheme, 0 0 0));\n                    border-radius: 5px;\n                }\n                .text {\n                    position: relative;\n                    width: 100%;\n                    display: flex;\n                    align-items: center;\n                    padding: .375rem .75rem;\n                    cursor: pointer;\n                    border-radius: .25rem;\n                    color: rgb(var(--cTheme, 0 0 0));\n                }\n                .text:hover {\n                    background: rgb(var(--cBaseL1, 0 0 0 / .08));\n                }\n                .caret {\n                    display: none;\n                    height: 22px;\n                    margin-left: auto;\n                    margin-right: -.375rem;\n                }\n                slot[name=\"nested\"] {\n                    display: none;\n                }\n                slot[name=\"icon\"] {\n                    margin-right: .75rem;\n                    margin-left: -.375rem\n                }\n                :host([opened]) slot[name=\"nested\"] {\n                    display: block;\n                }\n                :host([has-nested-menu][opened]) .caret.opened {\n                    display: inline-block;\n                }\n                :host([has-nested-menu]:not([opened])) .caret.closed {\n                    display: inline-block;\n                }\n            "]);
+    _classPrivateMethodInitSpec(_this2, _Class2_brand);
+    _classPrivateFieldInitSpec(_this2, _root2, void 0);
+    _classPrivateFieldInitSpec(_this2, _nestedSlot, void 0);
+    _classPrivateFieldInitSpec(_this2, _hasNestedMenu, void 0);
+    _classPrivateFieldSet(_hasNestedMenu, _this2, false);
+    _classPrivateFieldSet(_root2, _this2, _this2.shadowRoot.querySelector('[root]'));
+    _classPrivateFieldGet(_root2, _this2).addEventListener('click', _assertClassBrand(_Class2_brand, _this2, _onClick).bind(_this2));
+    _classPrivateFieldSet(_nestedSlot, _this2, _this2.shadowRoot.querySelector('slot[name="nested"]'));
+    _classPrivateFieldGet(_nestedSlot, _this2).addEventListener('slotchange', _assertClassBrand(_Class2_brand, _this2, _onNestedSlotChange).bind(_this2));
+    return _this2;
   }
   _inherits(_class2, _MWC2);
   return _createClass(_class2);
@@ -611,7 +640,10 @@ function _onClick(event) {
   var value = this.getAttribute('value');
   if (value !== undefined) {
     this.dispatchEvent(new CustomEvent('select', {
-      detail: value,
+      detail: {
+        value: value,
+        element: this
+      },
       composed: true,
       bubbles: true
     }));

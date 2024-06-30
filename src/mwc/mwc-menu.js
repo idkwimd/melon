@@ -2,6 +2,10 @@ import { MWC } from './mwc.js'
 
 customElements.define('mwc-menu', class extends MWC
 {
+    #root
+    #selectedMenu
+    #slot
+
     constructor ()
     {
         super(
@@ -27,6 +31,38 @@ customElements.define('mwc-menu', class extends MWC
                 }
             `
         )
+
+        this.#root = this.shadowRoot.querySelector('[root]')
+        this.#root.addEventListener('select', this.#onMenuSelect.bind(this))
+        this.#slot = this.shadowRoot.querySelector('slot')
+    }
+
+    #onMenuSelect (event)
+    {
+        if (this.hasAttribute('nested'))
+        {
+            return
+        }
+
+        if (!this.#selectedMenu)
+        {
+            const el = this.#slot
+                .assignedElements({ flatten: true })
+                .find(x => x.matches('mwc-menu-item[active]'))
+
+            if (el)
+            {
+                this.#selectedMenu = el
+            }
+        }
+
+        if (this.#selectedMenu)
+        {
+            this.#selectedMenu.removeAttribute('active')
+        }
+
+        this.#selectedMenu = event.detail.element
+        this.#selectedMenu.setAttribute('active', '')
     }
 })
 
@@ -54,7 +90,18 @@ customElements.define('mwc-menu-item', class extends MWC
                 :host {
                     display: block;
                 }
+                :host([active]) .text::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 3px;
+                    height: 100%;
+                    background: rgb(var(--cTheme, 0 0 0));
+                    border-radius: 5px;
+                }
                 .text {
+                    position: relative;
                     width: 100%;
                     display: flex;
                     align-items: center;
@@ -113,7 +160,10 @@ customElements.define('mwc-menu-item', class extends MWC
         if (value !== undefined)
         {
             this.dispatchEvent(new CustomEvent('select', {
-                detail: value,
+                detail: {
+                    value,
+                    element: this
+                },
                 composed: true,
                 bubbles: true
             }))

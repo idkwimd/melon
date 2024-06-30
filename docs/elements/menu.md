@@ -27,4 +27,4 @@
 ## Events
 | Name      | Description       |
 | ---       | ---               |
-| select | Emits a [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) when an item was clicked with the item's value as `detail` property if exits |
+| select | Same event propaginated from [mwc-menu-item](menu) |
