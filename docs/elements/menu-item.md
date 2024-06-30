@@ -8,6 +8,7 @@ Intended to be used as child of `<mwc-menu>`. See [Menu](menu)
 | ---  | ---         |
 | [default] | Item content |
 | icon | Icon on the left  |
+| extra | Extra accent text  |
 
 ## Attributes
 | Name | Value | Description |

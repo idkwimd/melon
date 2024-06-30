@@ -78,10 +78,15 @@ customElements.define('mwc-menu-item', class extends MWC
             /*html*/`
                 <div root>
                     <div class="text">
-                        <slot name="icon" display="inline-block"></slot>
-                        <slot></slot>
-                        <svg class="caret closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
-                        <svg class="caret opened" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        <div class="title">
+                            <slot name="icon" display="inline-block"></slot>
+                            <slot></slot>
+                            <svg class="caret closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
+                            <svg class="caret opened" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        </div>
+                        <div class="extra" display="block">
+                            <slot name="extra"></slot>
+                        </div>
                     </div>
                     <slot name="nested"></slot>
                 </div>
@@ -103,12 +108,18 @@ customElements.define('mwc-menu-item', class extends MWC
                 .text {
                     position: relative;
                     width: 100%;
-                    display: flex;
-                    align-items: center;
                     padding: .375rem .75rem;
                     cursor: pointer;
                     border-radius: .25rem;
                     color: rgb(var(--cTheme, 0 0 0));
+                }
+                .text > .title {
+                    display: flex;
+                    align-items: center;
+                }
+                .text > .extra {
+                    font-size: small;
+                    margin-top: .2rem;
                 }
                 .text:hover {
                     background: rgb(var(--cBaseL1, 0 0 0 / .08));
